@@ -23,13 +23,16 @@ client.on("ready", () => {
                 .then((collected) => {
                   collected.forEach((reaction) => {
                     reaction.users.cache.array().forEach((user) => {
-                      guild.members.fetch(user.id).then((member) => {
-                        member.roles.add(g.role, g.reason).then().catch(console.error);
-                      });
+                      guild.members
+                        .fetch(user.id)
+                        .then((member) => {
+                          member.roles.add(g.role, g.reason).then().catch(console.error);
+                        })
+                        .catch(console.warn);
                     });
                   });
                 })
-                .catch(console.error);
+                .catch(console.warn);
             }, 1000);
           });
         });
