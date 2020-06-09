@@ -26,7 +26,7 @@ client.on("ready", () => {
                       guild.members
                         .fetch(user.id)
                         .then((member) => {
-                          member.roles.add(g.role, g.reason).then().catch(console.error);
+                          member.roles.add(g.role, g.reason).then().catch(console.warn);
                         })
                         .catch(console.warn);
                     });
