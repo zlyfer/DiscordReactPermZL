@@ -19,7 +19,7 @@ client.on("ready", () => {
             const filter = (reaction) => reaction.emoji.name === g.reaction;
             setInterval(() => {
               fetchedMessage
-                .awaitReactions(filter)
+                .awaitReactions(filter, { time: 60000 })
                 .then((collected) => {
                   collected.forEach((reaction) => {
                     reaction.users.cache.array().forEach((user) => {
