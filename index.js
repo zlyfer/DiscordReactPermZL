@@ -16,7 +16,7 @@ client.on("ready", () => {
       if (channel)
         channel.fetch().then((fetchedChannel) => {
           fetchedChannel.messages.fetch(g.message).then((fetchedMessage) => {
-            const filter = (reaction) => reaction.emoji.name === g.reaction;
+            const filter = (reaction) => reaction.emoji.name === g.reaction || reaction.emoji.id == g.reaction;
             setInterval(() => {
               fetchedMessage
                 .awaitReactions(filter, { time: 60000 })
